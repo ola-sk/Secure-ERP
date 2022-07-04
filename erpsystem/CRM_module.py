@@ -32,7 +32,7 @@ def CRM_menu():
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
         for button in [CRM_BUTTON, SALES_BUTTON,HR_BUTTON, ABOUT_BUTTON, QUIT_BUTTON, ]:
-            button.changeColor(MENU_MOUSE_POS)
+            button.change_color(MENU_MOUSE_POS)
             button.update(SCREEN)
         
         for event in pygame.event.get():
@@ -40,15 +40,15 @@ def CRM_menu():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if CRM_BUTTON.check_for_input(MENU_MOUSE_POS):
                     CRM_menu()
-                if SALES_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if SALES_BUTTON.check_for_input(MENU_MOUSE_POS):
                     CRM_menu()
-                if HR_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if HR_BUTTON.check_for_input(MENU_MOUSE_POS):
                    CRM_menu()
-                if ABOUT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if ABOUT_BUTTON.check_for_input(MENU_MOUSE_POS):
                     CRM_menu()
-                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if QUIT_BUTTON.check_for_input(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
 

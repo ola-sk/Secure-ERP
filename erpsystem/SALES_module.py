@@ -33,7 +33,7 @@ def SALES_MENU():
         SCREEN.blit(ABOUT_MENU_TEXT, ABOUT_MENU_RECT)
         ABOUT_BACK = Button(image=None, pos=(320, 520),
         text_input="BACK", font=get_font(30), base_color="black", hovering_color="white")
-        ABOUT_BACK.changeColor(ABOUT_MOUSE_POS)
+        ABOUT_BACK.change_color(ABOUT_MOUSE_POS)
         ABOUT_BACK.update(SCREEN)
 
         for event in pygame.event.get():
@@ -41,7 +41,7 @@ def SALES_MENU():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if ABOUT_BACK.checkForInput(ABOUT_MOUSE_POS):
+                if ABOUT_BACK.check_for_input(ABOUT_MOUSE_POS):
                     import main_menu
                     
 
