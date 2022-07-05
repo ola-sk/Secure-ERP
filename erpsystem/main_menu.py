@@ -14,9 +14,7 @@ pygame.display.set_caption("SECURE ERP SYSTEM")  # nazwa okna
 BG = pygame.image.load("assets/Background.png")
 SONG = pygame.mixer.Sound('audio/menusong.mp3')
 SONG.play()
- 
-def get_font(size): # ładowanie naszej czcionki tutaj quicksand
-    return pygame.font.Font("assets/font1.otf", size) 
+
 
 def CRM_module():
     # CRM_menu()

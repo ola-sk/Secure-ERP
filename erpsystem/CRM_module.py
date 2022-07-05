@@ -10,10 +10,6 @@ SCREEN = pygame.display.set_mode((600, 600))
 BG = pygame.image.load("assets/Background.png")
 
 
-def get_font(size):  # ładowanie naszej czcionki tutaj quicksand
-    return pygame.font.Font("assets/font1.otf", size)
-
-
 def CRM_menu():
     while True:
         SCREEN.blit(BG, (0, 0))
