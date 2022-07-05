@@ -1,9 +1,9 @@
-import pygame, sys
-from button import Button
-import builtins
-from random import random
-import pygame, sys
+# import builtins
+# from random import random
+import pygame
+import sys
 
+from button import Button
 
 pygame.mixer.init()  #odwarzacz dzwieku
 pygame.init()
@@ -23,14 +23,12 @@ def CRM_module():
     
 
 def SALES_module():
-    import SALES_module
+    pass
     
 
 def HR_module():
     pygame.quit()
-    
-    import HR_module
-    
+
 
 def about():
     while True:
