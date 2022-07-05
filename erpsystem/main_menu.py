@@ -18,11 +18,11 @@ def get_font(size): # ładowanie naszej czcionki tutaj quicksand
 def CRM_module():  
     # CRM_menu()
     pass
-    
+
 
 def SALES_module():
     pass
-    
+
 
 def HR_module():
     pygame.quit()
@@ -91,7 +91,7 @@ def main_menu():
         for button in [CRM_BUTTON, SALES_BUTTON,HR_BUTTON, ABOUT_BUTTON, QUIT_BUTTON, ]:
             button.change_color(MENU_MOUSE_POS)
             button.update(SCREEN)
-        
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

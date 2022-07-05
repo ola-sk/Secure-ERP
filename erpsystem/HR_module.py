@@ -12,18 +12,22 @@ pygame.display.set_caption("HR MODULE MENU")
 
 BG = pygame.image.load("assets/Background.png") 
 
+
 def name1():
     pass
- 
+
+
 def name2():
     pass
-    
+
+
 def name3():
     pass
     
 
 def name4():
     pass
+
 
 def HR_MENU():
     while True:

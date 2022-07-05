@@ -8,31 +8,34 @@ pygame.init()
 SCREEN = pygame.display.set_mode((600, 600))  
 pygame.display.set_caption("SALES MODULE MENU") 
 
-BG = pygame.image.load("assets/Background.png") 
+BG = pygame.image.load("assets/Background.png")
+
 
 def name1():
     pass
- 
+
+
 def name2():
     pass
-    
+
+
 def name3():
     pass
-    
+
 
 def name4():
     pass
 
+
 def SALES_MENU():
     while True:
         ABOUT_MOUSE_POS = pygame.mouse.get_pos()
-
         SCREEN.fill("gray")
         ABOUT_MENU_TEXT = get_font(50).render("CRM MENU ", True, "white")
         ABOUT_MENU_RECT = ABOUT_MENU_TEXT.get_rect(center=(320, 100))
         SCREEN.blit(ABOUT_MENU_TEXT, ABOUT_MENU_RECT)
         ABOUT_BACK = Button(image=None, pos=(320, 520),
-        text_input="BACK", font=get_font(30), base_color="black", hovering_color="white")
+                            text_input="BACK", font=get_font(30), base_color="black", hovering_color="white")
         ABOUT_BACK.change_color(ABOUT_MOUSE_POS)
         ABOUT_BACK.update(SCREEN)
 
@@ -46,4 +49,6 @@ def SALES_MENU():
                     
 
         pygame.display.update()
+
+
 SALES_MENU()
