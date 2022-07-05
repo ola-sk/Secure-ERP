@@ -6,19 +6,19 @@ import sys
 from button import Button
 from fonts import get_font
 
-pygame.mixer.init()  #odwarzacz dzwieku
+pygame.mixer.init()  # odwarzacz dzwieku
 pygame.init()
-SCREEN = pygame.display.set_mode((600, 600))  #nasze okno windows
-pygame.display.set_caption("SECURE ERP SYSTEM") #nazwa okna 
+SCREEN = pygame.display.set_mode((600, 600))  # nasze okno windows
+pygame.display.set_caption("SECURE ERP SYSTEM")  # nazwa okna
 
-BG = pygame.image.load("assets/Background.png") 
+BG = pygame.image.load("assets/Background.png")
 SONG = pygame.mixer.Sound('audio/menusong.mp3')
 SONG.play()
  
 def get_font(size): # ładowanie naszej czcionki tutaj quicksand
     return pygame.font.Font("assets/font1.otf", size) 
 
-def CRM_module():  
+def CRM_module():
     # CRM_menu()
     pass
 
@@ -40,12 +40,12 @@ def about():
         ABOUT_MENU_RECT = ABOUT_MENU_TEXT.get_rect(center=(320, 100))
         SCREEN.blit(ABOUT_MENU_TEXT, ABOUT_MENU_RECT)
         TEXT_PART = ["CREDITS:",
-            "",
-            "JULIA BUTKIEWICZ",
-            "",
-            "OLA SOKOLEK",
-            "",
-            "KRZYSZTOF KRÓL", ]
+                     "",
+                     "JULIA BUTKIEWICZ",
+                     "",
+                     "OLA SOKOLEK",
+                     "",
+                     "KRZYSZTOF KRÓL", ]
         pos_y = 200
         for line in range(len(TEXT_PART)):
             ABOUT_TEXT = get_font(40).render(TEXT_PART[line], True, "white")
@@ -78,20 +78,21 @@ def main_menu():
         MENU_TEXT = get_font(55).render("SECURE ERP", True, "#b68f40")
         MENU_RECT = MENU_TEXT.get_rect(center=(320, 50))
 
-        CRM_BUTTON = Button(image=pygame.image.load("assets/crm_btn.png"), pos=(320, 140), 
+        CRM_BUTTON = Button(image=pygame.image.load("assets/crm_btn.png"), pos=(320, 140),
                             text_input="CRM MODULE", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
         SALES_BUTTON = Button(image=pygame.image.load("assets/ssales_btn.png"), pos=(320, 240),
-                            text_input="SALES MODULE", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                              text_input="SALES MODULE", font=get_font(40), base_color="#d7fcd4",
+                              hovering_color="White")
         HR_BUTTON = Button(image=pygame.image.load("assets/hhr_btn.png"), pos=(320, 340),
-                                text_input="HR MODULE", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                           text_input="HR MODULE", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
         ABOUT_BUTTON = Button(image=pygame.image.load("assets/about_btn.png"), pos=(320, 440),
-                            text_input="ABOUT", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                              text_input="ABOUT", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
         QUIT_BUTTON = Button(image=pygame.image.load("assets/quit_btn.png"), pos=(320, 540),
-                            text_input="QUIT", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
+                             text_input="QUIT", font=get_font(40), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        for button in [CRM_BUTTON, SALES_BUTTON,HR_BUTTON, ABOUT_BUTTON, QUIT_BUTTON, ]:
+        for button in [CRM_BUTTON, SALES_BUTTON, HR_BUTTON, ABOUT_BUTTON, QUIT_BUTTON, ]:
             button.change_color(MENU_MOUSE_POS)
             button.update(SCREEN)
 

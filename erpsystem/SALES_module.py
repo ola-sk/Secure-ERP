@@ -6,10 +6,10 @@ import sys
 from button import Button
 from fonts import get_font
 
-pygame.mixer.init()  
+pygame.mixer.init()
 pygame.init()
-SCREEN = pygame.display.set_mode((600, 600))  
-pygame.display.set_caption("SALES MODULE MENU") 
+SCREEN = pygame.display.set_mode((600, 600))
+pygame.display.set_caption("SALES MODULE MENU")
 
 BG = pygame.image.load("assets/Background.png")
 
