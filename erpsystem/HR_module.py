@@ -1,4 +1,6 @@
-import pygame, sys
+import pygame
+import sys
+
 from button import Button
 import builtins
 from random import random

@@ -1,5 +1,3 @@
-# import builtins
-# from random import random
 import pygame
 import sys
 
