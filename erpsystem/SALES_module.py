@@ -4,8 +4,7 @@ import sys
 # from random import random
 
 from button import Button
-import builtins
-from random import random
+from fonts import get_font
 
 pygame.mixer.init()  
 pygame.init()

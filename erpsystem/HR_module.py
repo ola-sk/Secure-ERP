@@ -2,6 +2,7 @@ import pygame
 import sys
 
 from button import Button
+from fonts import get_font
 import builtins
 from random import random
 

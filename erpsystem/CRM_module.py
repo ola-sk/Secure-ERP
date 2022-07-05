@@ -4,9 +4,7 @@ import sys
 # from random import random
 
 from button import Button
-import builtins
-from random import random
-import pygame, sys
+from fonts import get_font
 
 SCREEN = pygame.display.set_mode((600, 600))
 BG = pygame.image.load("assets/Background.png") 

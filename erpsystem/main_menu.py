@@ -4,6 +4,7 @@ import sys
 # from random import random
 
 from button import Button
+from fonts import get_font
 
 pygame.mixer.init()  #odwarzacz dzwieku
 pygame.init()
