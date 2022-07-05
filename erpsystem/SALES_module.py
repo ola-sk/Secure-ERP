@@ -56,6 +56,3 @@ def SALES_MENU():
                     #  call main_menu if the flow gets to this point.
                     main_menu()
         pygame.display.update()
-
-
-SALES_MENU()

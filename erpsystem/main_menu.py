@@ -16,17 +16,19 @@ SONG = pygame.mixer.Sound('audio/menusong.mp3')
 SONG.play()
 
 
-def CRM_module():
-    # CRM_menu()
-    pass
+def crm_menu():
+    from CRM_module import CRM_menu
+    CRM_menu()
 
 
-def SALES_module():
-    pass
+def sales_menu():
+    from SALES_module import SALES_MENU
+    SALES_MENU()
 
 
-def HR_module():
-    pygame.quit()
+def hr_menu():
+    from HR_module import HR_MENU
+    HR_MENU()
 
 
 def about():
@@ -100,11 +102,11 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if CRM_BUTTON.check_for_input(MENU_MOUSE_POS):
-                    CRM_module()
+                    crm_menu()
                 if SALES_BUTTON.check_for_input(MENU_MOUSE_POS):
-                    SALES_module()
+                    sales_menu()
                 if HR_BUTTON.check_for_input(MENU_MOUSE_POS):
-                    HR_module()
+                    hr_menu()
                 if ABOUT_BUTTON.check_for_input(MENU_MOUSE_POS):
                     about()
                 if QUIT_BUTTON.check_for_input(MENU_MOUSE_POS):

@@ -58,4 +58,3 @@ def CRM_menu():
 
 
 pygame.display.update()
-CRM_menu()

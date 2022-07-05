@@ -4,6 +4,7 @@ import sys
 from button import Button
 from fonts import get_font
 from main_menu import main_menu
+
 # import builtins
 # from random import random
 
@@ -25,7 +26,7 @@ def name2():
 
 def name3():
     pass
-    
+
 
 def name4():
     pass
@@ -54,5 +55,3 @@ def HR_MENU():
                     
 
         pygame.display.update()
-
-HR_MENU()
