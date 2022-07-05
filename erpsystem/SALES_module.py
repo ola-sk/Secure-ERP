@@ -5,6 +5,7 @@ import sys
 
 from button import Button
 from fonts import get_font
+from main_menu import main_menu
 
 pygame.mixer.init()
 pygame.init()
@@ -48,9 +49,12 @@ def SALES_MENU():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ABOUT_BACK.check_for_input(ABOUT_MOUSE_POS):
-                    import main_menu
-                    
-
+                    # was import main_menu from which the main menu was called after declaration. That is not a
+                    # good practice because calls of functions are hidden or not clear.
+                    # TODO instead either import main_menu in this file and call the function main_menu() here.
+                    #  import both main_menu and sales_module to the controller and make controller
+                    #  call main_menu if the flow gets to this point.
+                    main_menu()
         pygame.display.update()
 
 

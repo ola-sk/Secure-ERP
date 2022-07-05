@@ -113,5 +113,3 @@ def main_menu():
 
         pygame.display.update()
 
-
-main_menu()

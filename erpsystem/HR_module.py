@@ -3,8 +3,9 @@ import sys
 
 from button import Button
 from fonts import get_font
-import builtins
-from random import random
+from main_menu import main_menu
+# import builtins
+# from random import random
 
 pygame.mixer.init()  
 pygame.init()
@@ -49,7 +50,7 @@ def HR_MENU():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if ABOUT_BACK.check_for_input(ABOUT_MOUSE_POS):
-                    import main_menu
+                    main_menu()
                     
 
         pygame.display.update()
