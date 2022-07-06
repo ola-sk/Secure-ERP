@@ -28,7 +28,8 @@ def CRM_module():
         CRM_MENU_TEXT = get_font(30).render("CRM MODULE ", True, "black")
         CRM_MENU_RECT = CRM_MENU_TEXT.get_rect(center=(320, 20))
         SCREEN.blit(CRM_MENU_TEXT, CRM_MENU_RECT)
-        TEXT_PART = [" tu bedzie okienko i jednorożce"]
+        TEXT_PART = [" tu bedzie okienko "
+        "i jednorożce"]
         pos_y = 200
         pos_x=320 
        
@@ -40,22 +41,22 @@ def CRM_module():
         font_size=20    
         CRM_ADD = Button(image=None, pos=(200, 520),
                             text_input="ADD", font=get_font(font_size), base_color="blue", hovering_color="white")
-        CRM_ADD.changeColor(CRM_MOUSE_POS)
+        CRM_ADD.change_Color(CRM_MOUSE_POS)
         CRM_ADD.update(SCREEN)
 
         CRM_BACK = Button(image=None, pos=(300, 520),
                             text_input="BACK", font=get_font(font_size), base_color="black", hovering_color="white")
-        CRM_BACK.changeColor(CRM_MOUSE_POS)
+        CRM_BACK.change_Color(CRM_MOUSE_POS)
         CRM_BACK.update(SCREEN)
 
         CRM_DELETE = Button(image=None, pos=(400, 520),
                             text_input="DELETE", font=get_font(font_size), base_color="red", hovering_color="white")
-        CRM_DELETE.changeColor(CRM_MOUSE_POS)
+        CRM_DELETE.change_Color(CRM_MOUSE_POS)
         CRM_DELETE.update(SCREEN)
 
         CRM_READLIST = Button(image=None, pos=(500, 520),
                             text_input="READLIST", font=get_font(font_size), base_color="red", hovering_color="white")
-        CRM_READLIST.changeColor(CRM_MOUSE_POS)
+        CRM_READLIST.change_Color(CRM_MOUSE_POS)
         CRM_READLIST.update(SCREEN)
         
         for event in pygame.event.get():
@@ -63,16 +64,16 @@ def CRM_module():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_BACK.checkForInput(CRM_MOUSE_POS):
+                if CRM_BACK.check_For_Input(CRM_MOUSE_POS):
                     main_menu()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_ADD.checkForInput(CRM_MOUSE_POS):
+                if CRM_ADD.check_For_Input(CRM_MOUSE_POS):
                     main_menu() #do zmiany na wywylywana fukcje np dodawanie uzytkownik
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_DELETE.checkForInput(CRM_MOUSE_POS):
+                if CRM_DELETE.check_For_Input(CRM_MOUSE_POS):
                     main_menu()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_READLIST.checkForInput(CRM_MOUSE_POS):
+                if CRM_READLIST.check_For_Input(CRM_MOUSE_POS):
                     pygame.Surface(list, (0,0))
                     
         pygame.display.update()
@@ -106,7 +107,7 @@ def about():
 
         ABOUT_BACK = Button(image=None, pos=(320, 520),
                             text_input="BACK", font=get_font(30), base_color="black", hovering_color="white")
-        ABOUT_BACK.changeColor(ABOUT_MOUSE_POS)
+        ABOUT_BACK.change_Color(ABOUT_MOUSE_POS)
         ABOUT_BACK.update(SCREEN)
 
         for event in pygame.event.get():
@@ -114,7 +115,7 @@ def about():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if ABOUT_BACK.checkForInput(ABOUT_MOUSE_POS):
+                if ABOUT_BACK.check_For_Input(ABOUT_MOUSE_POS):
                     main_menu()
 
         pygame.display.update()
@@ -142,7 +143,7 @@ def main_menu():
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
         for button in [CRM_BUTTON, SALES_BUTTON,HR_BUTTON, ABOUT_BUTTON, QUIT_BUTTON, ]:
-            button.changeColor(MENU_MOUSE_POS)
+            button.change_Color(MENU_MOUSE_POS)
             button.update(SCREEN)
         
         for event in pygame.event.get():
@@ -150,15 +151,15 @@ def main_menu():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if CRM_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if CRM_BUTTON.check_For_Input(MENU_MOUSE_POS):
                     CRM_module()
-                if SALES_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if SALES_BUTTON.check_For_Input(MENU_MOUSE_POS):
                     SALES_module()
-                if HR_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if HR_BUTTON.check_For_Input(MENU_MOUSE_POS):
                     HR_module()
-                if ABOUT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if ABOUT_BUTTON.check_For_Input(MENU_MOUSE_POS):
                     about()
-                if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                if QUIT_BUTTON.check_For_Input(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
 
