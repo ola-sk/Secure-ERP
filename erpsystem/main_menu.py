@@ -8,7 +8,6 @@ pygame.mixer.init()  #odwarzacz dzwieku
 pygame.init()
 SCREEN = pygame.display.set_mode((600, 600))  #nasze okno windows
 pygame.display.set_caption("SECURE ERP SYSTEM") #nazwa okna 
-
 BG = pygame.image.load("erpsystem/assets/Background.png") 
 SONG = pygame.mixer.Sound('erpsystem/audio/menusong.mp3')
 # SONG.play()
@@ -19,8 +18,8 @@ def file_load(): #tymczasowo  pozniej wyrzuce do osobnego pliku
     for line in file:
         games.append(line.split("\t"))# "\t" sortuje listy ktore sa odzielone TAB
     return games
-games=file_load()
 
+games=file_load()
 
 def CRM_module():  
     while True:
@@ -29,7 +28,7 @@ def CRM_module():
         CRM_MENU_TEXT = get_font(30).render("CRM MODULE ", True, "black")
         CRM_MENU_RECT = CRM_MENU_TEXT.get_rect(center=(320, 20))
         SCREEN.blit(CRM_MENU_TEXT, CRM_MENU_RECT)
-        TEXT_PART = [games]
+        TEXT_PART = [" tu bedzie okienko i jednorożce"]
         pos_y = 200
         pos_x=320 
        
@@ -59,8 +58,6 @@ def CRM_module():
         CRM_READLIST.changeColor(CRM_MOUSE_POS)
         CRM_READLIST.update(SCREEN)
         
-       
-
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -80,15 +77,12 @@ def CRM_module():
                     
         pygame.display.update()
     
-
 def SALES_module():
     pass
     
-
 def HR_module():
     pass
     
-
 def about():
     while True:
         ABOUT_MOUSE_POS = pygame.mouse.get_pos()
@@ -124,7 +118,6 @@ def about():
                     main_menu()
 
         pygame.display.update()
-
 
 def main_menu():
     while True:
@@ -170,6 +163,5 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
-
 
 main_menu()
