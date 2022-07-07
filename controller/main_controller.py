@@ -1,3 +1,5 @@
+# controller/main_controller.py is called from the root of repo inside the erp.py, therefore it has access to folders
+# like "view", "model", "controller" directly using just "from `directory_name` import `python_file_name`"
 from view import terminal as view
 from controller import crm_controller, sales_controller, hr_controller
 
