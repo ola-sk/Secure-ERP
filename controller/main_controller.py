@@ -26,14 +26,17 @@ def display_menu():
 
 
 def menu():
-    option = None
-    while option != '0':
-        display_menu()
-        try:
-            option = view.get_input("Select module")
-            load_module(int(option))
-        except KeyError:
-            view.print_error_message("There is no such option!")
-        except ValueError:
-            view.print_error_message("Please enter a number!")
-    view.print_message("Good-bye!")
+    try:
+        option = None
+        while option != '0':
+            display_menu()
+            try:
+                option = view.get_input("Select module")
+                load_module(int(option))
+            except KeyError:
+                view.print_error_message("There is no such option!")
+            except ValueError:
+                view.print_error_message("Please enter a number!")
+        view.print_message("Good-bye!")
+    except Exception as some_exception:
+        view.print_error_message(some_exception)
