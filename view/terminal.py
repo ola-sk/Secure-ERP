@@ -26,7 +26,9 @@ def print_message(message):
     Args:
         message: str - the message
     """
+    from time import sleep
     print(message)
+    sleep(3)
 
 
 def print_general_results(result, label):
@@ -79,4 +81,6 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
+    from time import sleep
     print(message)
+    sleep(3)
