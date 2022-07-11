@@ -53,7 +53,12 @@ def print_table(table):
     Args:
         table: list of lists - the table to print out
     """
-    pass
+    print("/--------------------------------\\")
+    for row in table:
+        for column in row:
+            print("|%25s" % column, end="")
+        print()
+    print("\--------------------------------/")
 
 
 def get_input(label):
