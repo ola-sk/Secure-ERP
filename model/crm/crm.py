@@ -10,5 +10,7 @@ Data table structure:
 from model import data_manager, util
 
 
-DATAFILE = "model/crm/crm.csv"
+DATAFILE = "./model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
+customer_table = data_manager.read_table_from_file(DATAFILE)
+customer_table.insert(0, HEADERS)
