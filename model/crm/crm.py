@@ -12,5 +12,9 @@ from model import data_manager, util
 
 DATAFILE = "./model/crm/crm.csv"
 HEADERS = ["id", "name", "email", "subscribed"]
-customer_table = data_manager.read_table_from_file(DATAFILE)
-customer_table.insert(0, HEADERS)
+
+
+def read_customer_data(path, header):
+    customer_table = data_manager.read_table_from_file(path)
+    customer_table.insert(0, header)
+    return customer_table

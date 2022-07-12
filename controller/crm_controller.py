@@ -1,9 +1,11 @@
 from model.crm import crm
 from view import terminal as view
+from model.crm.crm import DATAFILE, HEADERS
 
 
 def list_customers():
-    view.print_table(crm.customer_table)
+    customer_table = crm.read_customer_data(DATAFILE, HEADERS)
+    view.print_table(customer_table)
 
 
 def add_customer():
