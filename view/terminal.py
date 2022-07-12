@@ -47,18 +47,85 @@ def print_general_results(result, label):
 # |--------|------------|----------|
 # |   1    | Sidewinder | missile  |
 # \-----------------------------------/
-def print_table(table):
+def get_min_column_widths(table):
+    min_column_widths = []
+    number_of_columns = len(table[0])
+    for column in range(number_of_columns):
+        min_column_widths.append(0)
+    for row in table:
+        for index, column in enumerate(row):
+            if min_column_widths[index] < len(column):
+                min_column_widths[index] = len(column)
+    return min_column_widths
+
+
+def get_table_row_format(min_widths: list, separator: str, padding_size: int):
+    from io import StringIO
+    buffer = StringIO()
+    buffer.write(separator)
+    for width in min_widths:
+        buffer.write("{:<")
+        buffer.write(str(width))
+        buffer.write("}")
+        buffer.write(padding_size * " ")
+        buffer.write(separator)
+    table_row_format = buffer.getvalue()
+    return table_row_format
+
+
+def get_table_separator_length(min_widths, separator, padding_size):
+    number_of_columns = len(min_widths)
+    table_structure_width = len(separator) + (number_of_columns * padding_size) + (number_of_columns * len(separator))
+    table_width = table_structure_width + sum(min_widths)
+    return table_width
+
+
+def format_table(table, is_headers=True):
     """Prints tabular data like above.
 
     Args:
+        is_headers: boolean, default: True
+            tells if the table provided has header or not.
         table: list of lists - the table to print out
     """
-    print("/--------------------------------\\")
-    for row in table:
-        for column in row:
-            print("|%25s" % column, end="")
-        print()
-    print("\--------------------------------/")
+    from io import StringIO
+    buffer = StringIO()
+
+    min_widths = get_min_column_widths(table)
+    padding_size = 1
+    separator = "|"
+    table_row_format = get_table_row_format(min_widths, separator, padding_size)
+    separator_length = get_table_separator_length(min_widths, separator, padding_size) - 2
+
+    # separator top
+    buffer.write("/")
+    buffer.write("-" * separator_length)
+    buffer.write("\\")
+    buffer.write("\n")
+
+    # table
+    header = []
+    for row_index, row in enumerate(table):
+        if is_headers and row_index == 0:
+            for column_index, column in enumerate(row):
+                header.append(column.upper())
+            buffer.write(table_row_format.format(*header))
+            buffer.write("\n")
+        else:
+            buffer.write(table_row_format.format(*row))
+            buffer.write("\n")
+
+    # separator bottom
+    buffer.write("\\")
+    buffer.write("-" * separator_length)
+    buffer.write("/")
+    table_in_string = buffer.getvalue()
+    return table_in_string
+
+
+def print_table(table: str):
+    printable_table = format_table(table)
+    print(printable_table)
 
 
 def get_input(label):
