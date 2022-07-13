@@ -9,12 +9,12 @@ def read_table_from_file(file_name, separator=';'):
         The data parsed into a list of lists.
     """
     try:
-        customer_list = []
+        rows_and_columns = []
         with open(file_name, "r") as file:
             lines = file.readlines()
             for line in lines:
-                customer_list.append(line.replace("\n", "").split(separator))
-            return customer_list
+                rows_and_columns.append(line.replace("\n", "").split(separator))
+            return rows_and_columns
     except IOError:
         return []
 
