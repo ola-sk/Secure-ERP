@@ -40,13 +40,6 @@ def print_general_results(result, label):
     pass
 
 
-# /--------------------------------\
-# |   id   |   product  |   type   |
-# |--------|------------|----------|
-# |   0    |  Bazooka   | portable |
-# |--------|------------|----------|
-# |   1    | Sidewinder | missile  |
-# \-----------------------------------/
 def get_min_column_widths(table):
     min_column_widths = []
     number_of_columns = len(table[0])
@@ -64,6 +57,7 @@ def get_table_row_format(min_widths: list, separator: str, padding_size: int, pa
     buffer = StringIO()
     buffer.write(separator)
     for width in min_widths:
+        buffer.write(padding_size * padding_char)
         buffer.write("{:<")
         buffer.write(str(width))
         buffer.write("}")
@@ -75,18 +69,31 @@ def get_table_row_format(min_widths: list, separator: str, padding_size: int, pa
 
 def get_table_separator_length(min_widths, separator, padding_size):
     number_of_columns = len(min_widths)
-    table_structure_width = len(separator) + (number_of_columns * padding_size) + (number_of_columns * len(separator))
+    table_structure_width = len(separator) + (2 * number_of_columns * padding_size) + (number_of_columns * len(separator
+                                                                                                               ))
     table_width = table_structure_width + sum(min_widths)
     return table_width
 
 
 def format_table(table, is_headers=True):
-    """Prints tabular data like above.
+    """Formats tabular data as follows:
+
+    .--------------------------------.
+    | ID     | PRODUCT    | TYPE     |
+    |========|============|==========|
+    |   0    |  Bazooka   | portable |
+    |   1    | Sidewinder | missile  |
+    '--------------------------------'
 
     Args:
+        table: list of lists
+            the table to print out.
         is_headers: boolean, default: True
-            tells if the table provided has header or not.
-        table: list of lists - the table to print out
+            tells if the table provided has a header or not in the first row.
+
+    Returns:
+        table_in_string: str
+            String representation of the formatted table.
     """
     from io import StringIO
     buffer = StringIO()
@@ -95,30 +102,35 @@ def format_table(table, is_headers=True):
     padding_size = 1
     separator = "|"
     table_row_format = get_table_row_format(min_widths, separator, padding_size)
-    separator_length = get_table_separator_length(min_widths, separator, padding_size) - 2
+    horizontal_separator_length = get_table_separator_length(min_widths, separator, padding_size) - 2
 
     # separator top
-    buffer.write("/")
-    buffer.write("-" * separator_length)
-    buffer.write("\\")
+    buffer.write(".")
+    buffer.write("-" * horizontal_separator_length)
+    buffer.write(".")
     buffer.write("\n")
 
     # table
-    header = []
+    headers = []
+    headers_separators = [width * "=" for width in min_widths]
+    headers_separator_row_format = get_table_row_format(min_widths, separator, padding_size, "=")
+    headers_separators = headers_separator_row_format.format(*headers_separators)
     for row_index, row in enumerate(table):
         if is_headers and row_index == 0:
             for column_index, column in enumerate(row):
-                header.append(column.upper())
-            buffer.write(table_row_format.format(*header))
+                headers.append(column.upper())
+            buffer.write(table_row_format.format(*headers))
+            buffer.write("\n")
+            buffer.write(headers_separators)
             buffer.write("\n")
         else:
             buffer.write(table_row_format.format(*row))
             buffer.write("\n")
 
     # separator bottom
-    buffer.write("\\")
-    buffer.write("-" * separator_length)
-    buffer.write("/")
+    buffer.write("'")
+    buffer.write("-" * horizontal_separator_length)
+    buffer.write("'")
     table_in_string = buffer.getvalue()
     return table_in_string
 
