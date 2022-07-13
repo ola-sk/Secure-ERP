@@ -59,7 +59,7 @@ def get_min_column_widths(table):
     return min_column_widths
 
 
-def get_table_row_format(min_widths: list, separator: str, padding_size: int):
+def get_table_row_format(min_widths: list, separator: str, padding_size: int, padding_char=" "):
     from io import StringIO
     buffer = StringIO()
     buffer.write(separator)
@@ -67,7 +67,7 @@ def get_table_row_format(min_widths: list, separator: str, padding_size: int):
         buffer.write("{:<")
         buffer.write(str(width))
         buffer.write("}")
-        buffer.write(padding_size * " ")
+        buffer.write(padding_size * padding_char)
         buffer.write(separator)
     table_row_format = buffer.getvalue()
     return table_row_format
