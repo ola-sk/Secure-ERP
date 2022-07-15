@@ -1,6 +1,3 @@
-# Do not modify this file!
-
-
 def read_table_from_file(file_name, separator=';'):
     """Read CSV file into a data table.
 
@@ -12,9 +9,12 @@ def read_table_from_file(file_name, separator=';'):
         The data parsed into a list of lists.
     """
     try:
+        rows_and_columns = []
         with open(file_name, "r") as file:
             lines = file.readlines()
-        return [element.replace("\n", "").split(separator) for element in lines]
+            for line in lines:
+                rows_and_columns.append(line.replace("\n", "").split(separator))
+            return rows_and_columns
     except IOError:
         return []
 

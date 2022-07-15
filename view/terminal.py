@@ -11,7 +11,13 @@ def print_menu(title, list_options):
         title (str): the title of the menu (first row)
         list_options (list): list of the menu options (listed starting from 1, 0th element goes to the end)
     """
-    pass
+    print(title + ": ")
+    for index, option in enumerate(list_options):
+        if index == 0:
+            continue
+        else:
+            print("(" + str(index) + ")", option)
+    print("(0)", list_options[0])
 
 
 def print_message(message):
@@ -20,7 +26,9 @@ def print_message(message):
     Args:
         message: str - the message
     """
-    pass
+    from time import sleep
+    print(message)
+    sleep(3)
 
 
 def print_general_results(result, label):
@@ -32,20 +40,104 @@ def print_general_results(result, label):
     pass
 
 
-# /--------------------------------\
-# |   id   |   product  |   type   |
-# |--------|------------|----------|
-# |   0    |  Bazooka   | portable |
-# |--------|------------|----------|
-# |   1    | Sidewinder | missile  |
-# \-----------------------------------/
-def print_table(table):
-    """Prints tabular data like above.
+def get_min_column_widths(table):
+    min_column_widths = []
+    number_of_columns = len(table[0])
+    for column in range(number_of_columns):
+        min_column_widths.append(0)
+    for row in table:
+        for index, column in enumerate(row):
+            if min_column_widths[index] < len(column):
+                min_column_widths[index] = len(column)
+    return min_column_widths
+
+
+def get_table_row_format(min_widths: list, separator: str, padding_size: int, padding_char=" "):
+    from io import StringIO
+    buffer = StringIO()
+    buffer.write(separator)
+    for width in min_widths:
+        buffer.write(padding_size * padding_char)
+        buffer.write("{:<")
+        buffer.write(str(width))
+        buffer.write("}")
+        buffer.write(padding_size * padding_char)
+        buffer.write(separator)
+    table_row_format = buffer.getvalue()
+    return table_row_format
+
+
+def get_table_separator_length(min_widths, separator, padding_size):
+    number_of_columns = len(min_widths)
+    table_structure_width = len(separator) + (2 * number_of_columns * padding_size) + (number_of_columns * len(separator
+                                                                                                               ))
+    table_width = table_structure_width + sum(min_widths)
+    return table_width
+
+
+def format_table(table, is_headers=True):
+    """Formats tabular data as follows:
+
+    .--------------------------------.
+    | ID     | PRODUCT    | TYPE     |
+    |========|============|==========|
+    |   0    |  Bazooka   | portable |
+    |   1    | Sidewinder | missile  |
+    '--------------------------------'
 
     Args:
-        table: list of lists - the table to print out
+        table: list of lists
+            the table to print out.
+        is_headers: boolean, default: True
+            tells if the table provided has a header or not in the first row.
+
+    Returns:
+        table_in_string: str
+            String representation of the formatted table.
     """
-    pass
+    from io import StringIO
+    buffer = StringIO()
+
+    min_widths = get_min_column_widths(table)
+    padding_size = 1
+    separator = "|"
+    table_row_format = get_table_row_format(min_widths, separator, padding_size)
+    horizontal_separator_length = get_table_separator_length(min_widths, separator, padding_size) - 2
+
+    # separator top
+    buffer.write(".")
+    buffer.write("-" * horizontal_separator_length)
+    buffer.write(".")
+    buffer.write("\n")
+
+    # table
+    headers = []
+    headers_separators = [width * "=" for width in min_widths]
+    headers_separator_row_format = get_table_row_format(min_widths, separator, padding_size, "=")
+    headers_separators = headers_separator_row_format.format(*headers_separators)
+    for row_index, row in enumerate(table):
+        if is_headers and row_index == 0:
+            for column_index, column in enumerate(row):
+                headers.append(column.upper())
+            buffer.write(table_row_format.format(*headers))
+            buffer.write("\n")
+            buffer.write(headers_separators)
+            buffer.write("\n")
+        else:
+            buffer.write(table_row_format.format(*row))
+            buffer.write("\n")
+
+    # separator bottom
+    buffer.write("'")
+    buffer.write("-" * horizontal_separator_length)
+    buffer.write("'")
+    table_in_string = buffer.getvalue()
+    return table_in_string
+
+
+def print_table(table: str):
+    printable_table = format_table(table)
+    print(printable_table)
 
 
 def get_input(label):
@@ -54,7 +146,8 @@ def get_input(label):
     Args:
         label: str - the label before the user prompt
     """
-    pass
+    user_input = input(label + ": ")
+    return user_input
 
 
 def get_inputs(labels):
@@ -72,4 +165,6 @@ def print_error_message(message):
     Args:
         message: str - the error message
     """
-    pass
+    from time import sleep
+    print(message)
+    sleep(3)
