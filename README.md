@@ -38,7 +38,7 @@ You can run the program providing to python in the command either:
 Remember to surround the path with quotes if it uses spaces. 
 
 Use the relational path as in the example above if you start from the project's root directory in the terminal. 
-If you start from any different directory and you can relationally navigate to the root of the project where the erp.py 
+If you start from any different directory, and you can relationally navigate to the root of the project where the erp.py 
 file resides, the relational call is also possible.
 
 From any directory on your system you can call the python to run the erp.py providing the absolute path to the erp.py 
@@ -61,7 +61,7 @@ testpaths =
 ```
 ## How to Run the unit tests
 To run the unit tests from the terminal, first change the directory to the root of the "Secure-ERP" project. 
-Then, depending on your system and it's configuration with the python ecosystem, 
+Then, depending on your system, and it's configuration with the python ecosystem, 
 you can either run pytest using the `pytest` command directly or first calling python in your terminal, e.g. 
 `py`/`py3`/`python`/`python3` etc. with a flag `-m` and providing package name `pytest`, which in result looks like:
 ```
