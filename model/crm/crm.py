@@ -16,7 +16,8 @@ CUSTOMER_TABLE_INDEXES = {"id": 0, "name": 1, "email": 2, "subscribed": 3}
 SUBSCRIPTION_STATUSES = {"subscribed": "1", "not subscribed": "0"}
 
 
-def read_customer_data(path, header):
-    customer_table = data_manager.read_table_from_file(path)
-    customer_table.insert(0, header)
+def read_customer_data(path: str, headers: str = None, separator: str = ";") -> list:
+    customer_table = data_manager.read_table_from_file(path, separator)
+    if customer_table is not None and headers is not None:
+        customer_table.insert(0, headers)
     return customer_table
