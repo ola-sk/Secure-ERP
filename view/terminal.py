@@ -31,13 +31,44 @@ def print_message(message):
     sleep(3)
 
 
-def print_general_results(result, label):
+def get_minimum_column_width(a_list: list) -> int:
+    longest_item_length = 0
+    for item in a_list:
+        if len(item) > longest_item_length:
+            longest_item_length = len(item)
+    return longest_item_length
+
+
+def are_all_items_strings(a_list: list) -> bool:
+    for item in a_list:
+        if not isinstance(item, str):
+            return False
+    return True
+
+
+def print_general_results(result: int or float or list or tuple or dict, label: str) -> None:
     """Prints out any type of non-tabular data.
     It should print numbers (like "@label: @value", floats with 2 digits after the decimal),
     lists/tuples (like "@label: \n  @item1; @item2"), and dictionaries
     (like "@label \n  @key1: @value1; @key2: @value2")
     """
-    pass
+    if isinstance(result, int):
+        print(f"{label}: {result:.2f}")
+    elif isinstance(result, float):
+        print(f"{label}: {round(result, 2):.2f}")
+    elif isinstance(result, list) or isinstance(result, tuple):  # handle lists or tuples
+        from os import get_terminal_size
+        if are_all_items_strings(result):
+            print(label + ": ")
+            column_width = get_minimum_column_width(result)
+            number_of_columns = get_terminal_size().columns // (column_width + 2)
+            for item in result:
+                for column in range(number_of_columns):
+                    print(f"{item:<{column_width}}; ")
+                print("\n")
+    elif isinstance(result, dict):
+        # TODO implement printing dictionaries
+        print_error_message("It is a dictionary. Printing of dictionaries is not yet implemented.")
 
 
 def get_min_column_widths(table):
