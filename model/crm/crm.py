@@ -10,8 +10,10 @@ Data table structure:
 from model import data_manager, util
 
 
-DATAFILE = "./model/crm/crm.csv"
-HEADERS = ["id", "name", "email", "subscribed"]
+CUSTOMER_DATAFILE = "./model/crm/crm.csv"
+CUSTOMER_TABLE_HEADERS = ["id", "name", "email", "subscribed"]
+CUSTOMER_TABLE_INDEXES = {"id": 0, "name": 1, "email": 2, "subscribed": 3}
+SUBSCRIPTION_STATUSES = {"subscribed": "1", "not subscribed": "0"}
 
 
 def read_customer_data(path, header):

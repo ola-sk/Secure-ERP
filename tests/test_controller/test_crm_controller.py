@@ -1,4 +1,4 @@
-from model.crm.crm import DATAFILE, HEADERS
+from model.crm.crm import CUSTOMER_DATAFILE, CUSTOMER_TABLE_HEADERS
 from controller.crm_controller import *
 from model.data_manager import read_table_from_file
 

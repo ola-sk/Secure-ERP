@@ -1,4 +1,5 @@
 from model.crm import crm
+from model.crm.crm import CUSTOMER_DATAFILE, CUSTOMER_TABLE_HEADERS, CUSTOMER_TABLE_INDEXES, SUBSCRIPTION_STATUSES
 from view import terminal as view
 from model.crm.crm import DATAFILE, HEADERS
 
