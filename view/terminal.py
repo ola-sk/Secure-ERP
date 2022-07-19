@@ -71,7 +71,7 @@ def print_general_results(result: int or float or list or tuple or dict, label: 
         print_error_message("It is a dictionary. Printing of dictionaries is not yet implemented.")
 
 
-def get_min_column_widths(table):
+def get_minimum_column_widths(table):
     min_column_widths = []
     number_of_columns = len(table[0])
     for column in range(number_of_columns):
@@ -129,7 +129,7 @@ def format_table(table, is_headers=True):
     from io import StringIO
     buffer = StringIO()
 
-    min_widths = get_min_column_widths(table)
+    min_widths = get_minimum_column_widths(table)
     padding_size = 1
     separator = "|"
     table_row_format = get_table_row_format(min_widths, separator, padding_size)
