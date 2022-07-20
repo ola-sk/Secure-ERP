@@ -44,8 +44,8 @@ def generate_id(number_of_small_letters=4,
     id_characters.extend(random.choices(string.ascii_uppercase, k=number_of_capital_letters))
     id_characters.extend(random.choices(string.digits, k=number_of_digits))
     id_characters.extend(random.choices(allowed_special_chars, k=number_of_special_chars))
-    id_characters_mixed_shaked = mix(shake(id_characters))
-    generated_id = convert_list_to_string(id_characters_mixed_shaked)
+    id_characters_mixed_shaken = mix(shake(id_characters))
+    generated_id = convert_list_to_string(id_characters_mixed_shaken)
     return generated_id  # 'T!uq6-b4Yq'
 
 
