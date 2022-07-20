@@ -16,7 +16,7 @@ def read_table_from_file(file_name, separator=';'):
                 rows_and_columns.append(line.replace("\n", "").split(separator))
             return rows_and_columns
     except IOError:
-        return []
+        return None
 
 
 def write_table_to_file(file_name, table, separator=';'):

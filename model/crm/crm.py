@@ -14,6 +14,7 @@ CUSTOMER_DATAFILE = "./model/crm/crm.csv"
 CUSTOMER_TABLE_HEADERS = ["id", "name", "email", "subscribed"]
 CUSTOMER_TABLE_INDEXES = {"id": 0, "name": 1, "email": 2, "subscribed": 3}
 SUBSCRIPTION_STATUSES = {"subscribed": "1", "not subscribed": "0"}
+ALTERNATIVES = {"yes": ["yes", "tak", "y", "1"], "no": ["no", "nie", "n", "0"]}
 
 
 def read_customer_data(path: str = CUSTOMER_DATAFILE, headers: list = None, separator: str = ";") -> list or None:
@@ -32,3 +33,43 @@ def read_customer_data(path: str = CUSTOMER_DATAFILE, headers: list = None, sepa
     if customer_table is not None and headers is not None:
         customer_table.insert(0, headers)
     return customer_table
+
+
+def get_customer_ids(customer_table_headerless: list, id_column_index: int = 0) -> list or None:
+    """
+
+    Args:
+        customer_table_headerless: list of lists
+        id_column_index: int - index of the column storing customer id.
+
+    Returns:
+        customer_id_column: list - list of customer ids.
+        None: if a TypeError occurs
+    """
+    try:
+        if customer_table_headerless is None:
+            raise TypeError
+        customer_id_column = util.get_column_data(customer_table_headerless, id_column_index)
+        return customer_id_column
+    except TypeError as error:
+        return None
+
+
+def insert_customer_data(record: list, path: str = CUSTOMER_DATAFILE, separator: str = ";") -> bool:
+    is_success = None
+    if data_manager.add_record_to_file(path, record, separator):
+        is_success = True
+        return is_success
+    else:
+        is_success = False
+        return is_success
+
+
+def get_customer_emails(customer_table_headerless: list, email_column_index: int = 2) -> list:
+    try:
+        if customer_table_headerless is None:
+            raise TypeError
+        customer_email_column = util.get_column_data(customer_table_headerless, email_column_index)
+        return customer_email_column
+    except TypeError as error:
+        return None
