@@ -11,7 +11,7 @@ def redirect_standard_output(callable):
     sys.stdout = captured_output
     callable()
     sys.stdout = sys.__stdout__
-    return captured_output
+    return captured_output.getvalue()
 
 
 def test_list_customers():
