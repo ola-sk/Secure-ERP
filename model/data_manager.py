@@ -1,8 +1,8 @@
-def read_table_from_file(file_name, separator=';'):
+def read_table_from_file(file_path: str, separator: str = ';') -> list:
     """Read CSV file into a data table.
 
     Args:
-        file_name: The name of the CSV data file.
+        file_path: The name of the CSV data file.
         separator: The CSV separator character
 
     Returns:
@@ -10,7 +10,7 @@ def read_table_from_file(file_name, separator=';'):
     """
     try:
         rows_and_columns = []
-        with open(file_name, "r") as file:
+        with open(file_path, "r") as file:
             lines = file.readlines()
             for line in lines:
                 rows_and_columns.append(line.replace("\n", "").split(separator))
