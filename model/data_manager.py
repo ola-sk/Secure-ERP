@@ -19,15 +19,34 @@ def read_table_from_file(file_path: str, separator: str = ';') -> list:
         return None
 
 
-def write_table_to_file(file_name, table, separator=';'):
-    """Write tabular data into a CSV file.
+def add_record_to_file(file_path: str, record: list, separator: str = ";") -> bool:
+    """Appends a row of tabular data into a CSV file.
 
     Args:
-        file_name: The name of the file to write to.
+        file_path: The name of the file to write to.
+        record: list containing tabular data, representing a row of data.
+        separator: The CSV separator character
+    """
+    is_success = False
+    with open(file_path, "a") as file:
+        row = separator.join(record)
+        file.write("\n" + row)
+        is_success = True
+    return is_success
+
+
+def write_table_to_file(file_path: str, table: list, separator: str = ';') -> bool:
+    """Overwrite tabular data into a CSV file. If there is some data in the file, this function overwrites the data.
+
+    Args:
+        file_path: The name of the file to write to.
         table: list of lists containing tabular data.
         separator: The CSV separator character
     """
-    with open(file_name, "w") as file:
+    is_success = False
+    with open(file_path, "w") as file:
         for record in table:
             row = separator.join(record)
             file.write(row + "\n")
+            is_success = True
+    return is_success
