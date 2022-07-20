@@ -87,11 +87,12 @@ def add_customer(yes: list, no: list) -> bool:
         view.print_error_message(error)
         return is_success
 
-def update_customer():
+
+def update_customer() -> bool:
     view.print_error_message("Not implemented yet.")
 
 
-def delete_customer():
+def delete_customer() -> bool:
     view.print_error_message("Not implemented yet.")
 
 
@@ -113,7 +114,7 @@ def list_subscribed_emails() -> bool | None:
         return is_success
 
 
-def run_operation(option):
+def run_operation(option) -> None:
     if option == 1:
         list_customers()
     elif option == 2:
@@ -130,7 +131,7 @@ def run_operation(option):
         raise KeyError("There is no such option.")
 
 
-def display_menu():
+def display_menu() -> None:
     options = ["Back to main menu",
                "List customers",
                "Add new customer",
@@ -140,7 +141,7 @@ def display_menu():
     view.print_menu("Customer Relationship Management", options)
 
 
-def menu():
+def menu() -> None:
     operation = None
     while operation != '0':
         display_menu()

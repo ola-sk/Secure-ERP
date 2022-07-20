@@ -1,4 +1,4 @@
-def print_menu(title, list_options):
+def print_menu(title: str, list_options: list) -> None:
     """Prints options in standard menu format like this:
 
     Main menu:
@@ -20,7 +20,7 @@ def print_menu(title, list_options):
     print("(0)", list_options[0])
 
 
-def print_message(message):
+def print_message(message: str) -> None:
     """Prints a single message to the terminal.
 
     Args:
@@ -71,7 +71,7 @@ def print_general_results(result: int or float or list or tuple or dict, label: 
         print_error_message("It is a dictionary. Printing of dictionaries is not yet implemented.")
 
 
-def get_minimum_column_widths(table):
+def get_minimum_column_widths(table: list) -> list:
     min_column_widths = []
     number_of_columns = len(table[0])
     for column in range(number_of_columns):
@@ -83,7 +83,7 @@ def get_minimum_column_widths(table):
     return min_column_widths
 
 
-def get_table_row_format(min_widths: list, separator: str, padding_size: int, padding_char=" "):
+def get_table_row_format(min_widths: list, separator: str, padding_size: int, padding_char=" ") -> str:
     from io import StringIO
     buffer = StringIO()
     buffer.write(separator)
@@ -106,7 +106,7 @@ def get_table_separator_length(min_widths, separator, padding_size):
     return table_width
 
 
-def format_table(table, is_headers=True):
+def format_table(table, is_headers=True) -> str:
     """Formats tabular data as follows:
 
     .--------------------------------.
@@ -166,12 +166,12 @@ def format_table(table, is_headers=True):
     return table_in_string
 
 
-def print_table(table: str):
+def print_table(table: list) -> None:
     printable_table = format_table(table)
     print(printable_table)
 
 
-def get_input(label):
+def get_input(label: str) -> str:
     """Gets single string input from the user.
 
     Args:
@@ -181,7 +181,7 @@ def get_input(label):
     return user_input
 
 
-def get_inputs(labels):
+def get_inputs(labels: list) -> list:
     """Gets a list of string inputs from the user.
 
     Args:
@@ -190,7 +190,7 @@ def get_inputs(labels):
     pass
 
 
-def print_error_message(message):
+def print_error_message(message: str) -> None:
     """Prints an error message to the terminal.
 
     Args:

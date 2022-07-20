@@ -17,7 +17,7 @@ def load_module(option) -> None:
         raise KeyError()
 
 
-def display_menu():
+def display_menu() -> None:
     options = ["Exit program",
                "Customer Relationship Management (CRM)",
                "Sales",
@@ -25,7 +25,7 @@ def display_menu():
     view.print_menu("Main menu", options)
 
 
-def handle_module_loading(option):
+def handle_module_loading(option) -> None:
     try:
         load_module(int(option))
     except KeyError:
@@ -34,7 +34,7 @@ def handle_module_loading(option):
         view.print_error_message("Please enter a number!")
 
 
-def menu():
+def menu() -> None:
     try:
         option = None
         while option != '0':

@@ -2,7 +2,7 @@ import random
 import string
 
 
-def mix(a_list):
+def mix(a_list: list):
     index_order = random.sample(range(len(a_list)), len(a_list))
     mixed_list = []
     for index in index_order:
@@ -14,7 +14,7 @@ def swap(item_a, item_b):
     return item_b, item_a
 
 
-def shake(a_list):
+def shake(a_list: list):
     for index, item in enumerate(a_list):
         if 1 <= index < (len(a_list) - 1):
             front_shake = random.choice([True, False])
@@ -29,16 +29,25 @@ def shake(a_list):
     return a_list
 
 
-def convert_list_to_string(a_list):
+def convert_list_to_string(a_list: list) -> str:
+    """
+
+    Args:
+        a_list: list - list to be converted
+
+    Returns:
+        a_string: str - a string made of the list items joined together
+
+    """
     a_string = "".join(a_list)
     return a_string
 
 
-def generate_id(number_of_small_letters=4,
-                number_of_capital_letters=2,
-                number_of_digits=2,
-                number_of_special_chars=2,
-                allowed_special_chars=r"_+-!"):
+def generate_id(number_of_small_letters: int = 4,
+                number_of_capital_letters: int = 2,
+                number_of_digits: int = 2,
+                number_of_special_chars: int = 2,
+                allowed_special_chars=r"_+-!") -> str:
     id_characters = []
     id_characters.extend(random.choices(string.ascii_lowercase, k=number_of_small_letters))
     id_characters.extend(random.choices(string.ascii_uppercase, k=number_of_capital_letters))
