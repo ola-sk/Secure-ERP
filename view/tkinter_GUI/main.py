@@ -1,7 +1,9 @@
 from tkinter import *
 
-root = Tk()
-root.title('Asparagusz - Secure Enterprise Resource Planning Software')
-root.geometry("1000x650")
 
-root.mainloop()
+app = Tk()
+app.title('Asparagusz - Secure Enterprise Resource Planning Software')
+app.geometry("1300x650")
+app.iconbitmap('./view/tkinter_GUI/assets/asparagusz.ico')
+
+app.mainloop()
