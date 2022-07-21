@@ -57,15 +57,16 @@ def print_general_results(result: int or float or list or tuple or dict, label: 
     elif isinstance(result, float):
         print(f"{label}: {round(result, 2):.2f}")
     elif isinstance(result, list) or isinstance(result, tuple):  # handle lists or tuples
-        from os import get_terminal_size
         if are_all_items_strings(result):
+            label_width = len(label) + len(":")
             print(label + ": ")
-            column_width = get_minimum_column_width(result)
-            number_of_columns = get_terminal_size().columns // (column_width + 2)
+            print(label_width * "=")
             for item in result:
-                for column in range(number_of_columns):
-                    print(f"{item:<{column_width}}; ")
-                print("\n")
+                print(item + ";")
+            print(label_width * "=")
+            return
+        else:
+            print_error_message("Not all items of the list are strings.")
     elif isinstance(result, dict):
         # TODO implement printing dictionaries
         print_error_message("It is a dictionary. Printing of dictionaries is not yet implemented.")
@@ -83,17 +84,17 @@ def get_minimum_column_widths(table: list) -> list:
     return min_column_widths
 
 
-def get_table_row_format(min_widths: list, separator: str, padding_size: int, padding_char=" ") -> str:
+def get_table_row_format(min_widths: list, cell_separator: str, padding_size: int, padding_char=" ") -> str:
     from io import StringIO
     buffer = StringIO()
-    buffer.write(separator)
+    buffer.write(cell_separator)
     for width in min_widths:
         buffer.write(padding_size * padding_char)
         buffer.write("{:<")
         buffer.write(str(width))
         buffer.write("}")
         buffer.write(padding_size * padding_char)
-        buffer.write(separator)
+        buffer.write(cell_separator)
     table_row_format = buffer.getvalue()
     return table_row_format
 
