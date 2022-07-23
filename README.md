@@ -8,7 +8,7 @@ coverage of code that doesn't directly take the user input.
 ### Python and python package versioning
 
 Because of the point we are in the course, we are not expected yet to implement any sort of virtual environments to
-control versioning of Python and python packages versioning. Therefore, we didn't implement it. We may create a list
+control versioning of Python and python packages. Therefore, we didn't implement it. We may create a list
 that present the versions of the packages used by team to run the software successfully. Look for it in the root of the
 repo going by a standard name of `requirements.txt`.
 
@@ -69,8 +69,11 @@ testpaths =
 
 ## How to Run the unit tests
 
-To run the unit tests from the terminal, first change the directory to the root of the "Secure-ERP" project. Then,
-depending on your system, and it's configuration with the python ecosystem, you can either run pytest using the `pytest`
+To run the unit tests, you first need to have pytest installed. Then from the terminal, if needed, first change the 
+directory to the 
+root of 
+the "Secure-ERP" project. Then,
+depending on your system, and its configuration with the python ecosystem, you can either run pytest using the `pytest`
 command directly or first calling python in your terminal, e.g.
 `py`/`py3`/`python`/`python3` etc. with a flag `-m` and providing package name `pytest`, which in result looks like:
 
