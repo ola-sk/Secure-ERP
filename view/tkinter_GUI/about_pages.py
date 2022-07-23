@@ -1,7 +1,8 @@
+from tkinter import Tk
 from tkinter.ttk import Label, Frame
 
 
-def display_about_enterprise_resource_planning(app):
+def display_about_enterprise_resource_planning(app: Tk) -> None:
 	about_enterprise_resource_planning_frame = Frame(app)
 	title = Label(
 		about_enterprise_resource_planning_frame,
@@ -41,3 +42,4 @@ def display_about_enterprise_resource_planning(app):
 	main_citation.pack(ipadx=150, ipady=15)
 	text.pack(ipadx=150, ipady=20)
 	about_enterprise_resource_planning_frame.pack()
+	return None
