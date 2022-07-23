@@ -4,12 +4,13 @@ from tkinter import Tk
 
 from controller import crm_controller, sales_controller, hr_controller
 
-from view import terminal as view
-# from view.tkinter_GUI import main as view
+# from view import terminal as view
+from view.tkinter_GUI import main as view
 
 
 def initialise_app() -> Tk or None:
 	app = view.initialise()
+	view.display_about_enterprise_resource_planning(app)
 	view.finalise(app)
 
 	return app

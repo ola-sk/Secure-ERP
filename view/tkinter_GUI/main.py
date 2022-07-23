@@ -1,4 +1,5 @@
 from tkinter import Tk
+from view.tkinter_GUI.about_pages import *
 
 
 def initialise() -> Tk:
@@ -11,3 +12,4 @@ def initialise() -> Tk:
 
 def finalise(app) -> None:
 	app.mainloop()
+	return None

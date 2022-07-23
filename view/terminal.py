@@ -213,6 +213,13 @@ def print_error_message(message: str) -> None:
 	return None
 
 
+def display_about_enterprise_resource_planning(app: None) -> None:
+	print(
+		"\n\"Enterprise resource planning is the integrated management of main business processes, \n"
+		"often in real time and mediated by software and technology.\" source: Wikipedia\n")
+	return None
+
+
 def finalise(app: None) -> None:
 	from time import sleep
 	print("finalising...")
