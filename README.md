@@ -70,11 +70,8 @@ testpaths =
 ## How to Run the unit tests
 
 To run the unit tests, you first need to have pytest installed. Then from the terminal, if needed, first change the 
-directory to the 
-root of 
-the "Secure-ERP" project. Then,
-depending on your system, and its configuration with the python ecosystem, you can either run pytest using the `pytest`
-command directly or first calling python in your terminal, e.g.
+directory to the root of the "Secure-ERP" project. Then, depending on your system, and its configuration with the python 
+ecosystem, you can either run pytest using the `pytest` command directly or first calling python in your terminal, e.g.
 `py`/`py3`/`python`/`python3` etc. with a flag `-m` and providing package name `pytest`, which in result looks like:
 
 ```
