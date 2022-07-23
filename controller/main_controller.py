@@ -33,7 +33,7 @@ def handle_module_loading(option) -> None:
 	except KeyError:
 		view.print_error_message("There is no such option!")
 	except ValueError:
-		view.print_error_message("Please enter a number!")
+		view.print_error_message("An integer was expected.")
 
 
 def main_menu() -> None:
