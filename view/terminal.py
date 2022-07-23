@@ -99,7 +99,7 @@ def get_table_row_format(min_widths: list, cell_separator: str, padding_size: in
 	return table_row_format
 
 
-def get_table_separator_length(min_widths, separator, padding_size):
+def get_table_width(min_widths, separator, padding_size):
 	number_of_columns = len(min_widths)
 	table_structure_width = \
 		len(separator) \
@@ -136,7 +136,7 @@ def format_table(table, is_headers=True) -> str:
 	padding_size = 1
 	separator = "|"
 	table_row_format = get_table_row_format(min_widths, separator, padding_size)
-	horizontal_separator_length = get_table_separator_length(min_widths, separator, padding_size) - 2
+	horizontal_separator_length = get_table_width(min_widths, separator, padding_size) - 2
 
 	# separator top
 	buffer.write(".")
@@ -172,6 +172,7 @@ def format_table(table, is_headers=True) -> str:
 def print_table(table: list) -> None:
 	printable_table = format_table(table)
 	print(printable_table)
+	return None
 
 
 def get_input(label: str) -> str:
@@ -204,3 +205,4 @@ def print_error_message(message: str) -> None:
 	from time import sleep
 	print(message)
 	sleep(2)
+	return None
