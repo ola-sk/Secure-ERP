@@ -1,8 +1,18 @@
 # controller/main_controller.py is called from the root of repo inside the erp.py, therefore it has access to folders
 # like "view", "model", "controller" directly using just "from `directory_name` import `python_file_name`" import.
-# from view import terminal as view
+from tkinter import Tk
+
 from controller import crm_controller, sales_controller, hr_controller
-from view.tkinter_GUI import main as view
+
+from view import terminal as view
+# from view.tkinter_GUI import main as view
+
+
+def initialise_app() -> Tk or None:
+	app = view.initialise()
+	view.finalise(app)
+
+	return app
 
 
 def load_module(option) -> None:

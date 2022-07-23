@@ -1,3 +1,8 @@
+def initialise() -> None:
+	print("Welcome to Asparagusz: an Enterprise Resource Planning Software!")
+	return None
+
+
 def print_menu(title: str, list_options: list) -> None:
 	"""Prints options in standard menu format like this:
 
@@ -204,5 +209,12 @@ def print_error_message(message: str) -> None:
 	"""
 	from time import sleep
 	print(message)
+	sleep(2)
+	return None
+
+
+def finalise(app: None) -> None:
+	from time import sleep
+	print("finalising...")
 	sleep(2)
 	return None
