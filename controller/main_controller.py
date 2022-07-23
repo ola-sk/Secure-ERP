@@ -36,7 +36,7 @@ def handle_module_loading(option) -> None:
 		view.print_error_message("Please enter a number!")
 
 
-def menu() -> None:
+def main_menu() -> None:
 	try:
 		option = None
 		while option != '0':
