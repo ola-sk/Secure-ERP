@@ -80,3 +80,92 @@ py -m pytest
 
 pytest should detect the `pytest.ini` configuration file that is in the root of the project and set up the test
 accordingly. According to the configuration file it should start looking in the `./tests` directory for tests to be run.
+
+
+# Where are we with the project
+
+## Current state of affairs
+As of now (I am writing it 23/07/2022) we are arguably halfway to the finish line of the project. 
+I am proud to announce that I tried my best to keep the code clean and the structure logical. I adhered to the MVC 
+design pattern in this project and divided the structure. I learned to use unit testing with pytest and 
+got myself a bit acquainted with unittest module. I want to thank my team, especially Kris for trying out and 
+comparing two graphical interfaces from an angle of applying it to our project: pygame and tkinter.
+pushing to 
+use 
+graphical interface tkinter in our project because that made me learn a new thing quickly, which made my thinking 
+more flexible.
+
+### What has been implemented so far is as follows:
+- Separation of concerns to Model, View and Controller as per MVC design pattern,
+- Reading from, and writing to .csv files and converting data to a format iterable by the program (list of lists),
+- Formatting and printing out to the terminal a table of clients' data.
+- A Button image in asparagus style (I hope you like it).
+
+### Things to be done:
+- GUI Log-in form.
+- Printing out to the GUI window a table (python's list of lists or two-dimensional list)
+
+## The not so problematic imports and a kind of walk-through
+We start at `erp.py` file in the root directory. From the start of our application we encounter a call of a function 
+that is in one of the controllers. The `main_controller`. Why such a placement? - we may think. Couldn't the app 
+start from the `main_controller` directly? This placement is because of the imports. After importing a module to the 
+`erp` (root directory), that imported package works as though it was placed literally in the root, because when we 
+try to import something from inside that imported to the root package it now needs to be imported relative to the 
+root directory! Which is convenient. We can import views and models from the directories down the tree to the 
+controllers that themselves have their own directory. And we do it always with the imports relative to the root 
+because anything that is run in this program is directly or indirectly imported to the erp.py in the very root of 
+the repository. As you see we can do that without any hustle with changing `os.path` and 
+similar, worse, things.
+
+### The flow logic of the program
+If you analyse imports in the files it all agrees. All of them are relative to the root of repo. In fact we cannot 
+import going to the directory backwards (i.e. the directory above) in Python. Or not without hacking paths around. 
+Below you find a flow diagram which you help you in acquainting yourself with the project structure. 
+Good luck!
+
+![Diagram](flow_diagram_example_run_ERP.png "Flow Diagram of an example run of the ERP Program")
+
+
+## Further development
+Beyond of what we already have done, we still lack some core functionalities of the program to be developed. Some 
+include defining more helper function around the functionality, others will reuse functions that are written already.
+
+#### Starting screen: 
+- _Ola's suggestion:_ 
+  - _quick solution:_ logging-in form without verification. 
+  - _potential:_ that could develop (if we had more time) into an IAM (Identity and Access Management. 
+    Depending on the role of a person in the company, access to some operations would be different. For example a shop 
+    worker may be able to search for a certain client in the database and would see a subset of that client's data. The 
+    range of that data may then depend on the operation the worker wants to perform on the customer. The worker 
+    would not be able to see a list of all the customers though, because his role would not give the worker access 
+    to the function that would list the clients (or any other one that would expose the worker to that data).
+
+#### CRM: Customer Relationship Management:
+- update customer:
+  - fetch the customer's data (search for a particular client): needs to be implemented.
+    - How? 
+      - __option 1:__ Let the user choose in which column to look for: Name or e-mail or id.
+      look for the entry which includes the string input from the user.
+      For the GUI in tkinter we may want to take a look at either 
+      [ttk.Combobox](https://docs.python.org/3/library/tkinter.ttk.html#combobox) or 
+      [ttk.Spinbox](https://docs.python.org/3/library/tkinter.ttk.html#spinbox) to circle a list of headers (defined 
+        as `CUSTOMER_TABLE_HEADERS` in `model/crm/crm.py`)
+      - __option 2:__ Go through every cell in the customers table and check for the cell that includes the string input
+      from the user.
+  
+      You can use the in operator or the string's find method to check if a string contains another string. The `in` 
+    operator returns True if the substring exists in the string. Otherwise, it returns False. The find method returns 
+    the index of the beginning of the substring if found, otherwise -1 is returned. There's also regex. For our 
+    purposes, usage of the `in` keyword would be enough. 
+  - Get the user to approve that the found record is indeed the customer he wants to update.
+  - If yes, ask for the new data, if not let the user know that nothing has been found and repeat the search.
+  - Update the record with new data. Be careful not to overwrite the whole file during the opening. See [this stack 
+    overflow post](https://stackoverflow.com/questions/46126082/how-to-update-rows-in-a-csv-file)
+    
+- delete customer
+
+#### HR: Human Resources
+We need to write everything in here.
+
+#### SALES
+We need to develop every function in this module as well.
