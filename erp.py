@@ -2,4 +2,4 @@ from controller import main_controller
 
 
 if __name__ == '__main__':
-	main_controller.initialise_app()
+	main_controller.run_the_app()

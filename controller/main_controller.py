@@ -8,9 +8,11 @@ from controller import crm_controller, sales_controller, hr_controller
 from view.tkinter_GUI import main as view
 
 
-def initialise_app() -> Tk or None:
+def run_the_app() -> Tk or None:
 	app = view.initialise()
+	# TODO: instead displaying `about ERP` display the log-in form upon successfull log-in show main menu
 	view.display_about_enterprise_resource_planning(app)
+
 	view.finalise(app)
 
 	return app
