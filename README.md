@@ -123,7 +123,7 @@ import going to the directory backwards (i.e. the directory above) in Python. Or
 Below you find a flow diagram which you help you in acquainting yourself with the project structure. 
 Good luck!
 
-![Diagram](flow_diagram_example_run_ERP.png "Flow Diagram of an example run of the ERP Program")
+![Diagram](flow_diagram_ERP_2k.png "Flow Diagram of an example run of the ERP Program")
 
 
 ## Further development
