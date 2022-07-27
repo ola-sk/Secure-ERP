@@ -1,5 +1,9 @@
 from tkinter import Tk
 from view.tkinter_GUI.about_pages import *
+from view.tkinter_GUI.menus import *
+from view.tkinter_GUI.modules.crm import *
+from view.tkinter_GUI.modules.hr import *
+from view.tkinter_GUI.modules.sales import *
 
 
 def initialise() -> Tk:
