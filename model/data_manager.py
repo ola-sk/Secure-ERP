@@ -37,7 +37,7 @@ def add_record_to_file(file_path: str, record: list, separator: str = ";") -> bo
 
 
 def write_table_to_file(file_path: str, table: list, separator: str = ';') -> bool:
-	"""Overwrite tabular data into a CSV file. If there is some data in the file, this function overwrites the data.
+	"""Writes formatted table into the file as a tabular data. It Overwrites the content of the file.
 
 	Args:
 		file_path: The name of the file to write to.
