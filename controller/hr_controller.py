@@ -5,21 +5,6 @@ from view import terminal as view
 
 from email import message
 
-
-employees_list = []
-def main_hr(message):
-	while True:
-		message = ("Welcome in HR_module. What would you like to do? ")
-		if message == "P":
-			print(employees_list)
-		elif message == "D":
-			delete_employee()
-		elif message == "A":
-			add_employee()
-		elif message == "U":
-			update_employee()
-			return
-
 def add_employee():
 	view.print_error_message("Not implemented yet.")
 
