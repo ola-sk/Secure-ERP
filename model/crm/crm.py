@@ -55,13 +55,12 @@ def get_customer_ids(customer_table_headerless: list, id_column_index: int = 0) 
 		return None
 
 
-def insert_customer_data(record: list, path: str = CUSTOMER_DATAFILE, separator: str = ";") -> bool:
-	if data_manager.add_record_to_file(path, record, separator):
+def insert_customer_data(new_customer_data: list, path: str = CUSTOMER_DATAFILE, separator: str = ";") -> bool:
+	if data_manager.add_record_to_file(path, new_customer_data, separator):
 		is_success = True
-		return is_success
 	else:
 		is_success = False
-		return is_success
+	return is_success
 
 
 def get_customer_emails(customer_table_headerless: list, email_column_index: int = 2) -> list or None:

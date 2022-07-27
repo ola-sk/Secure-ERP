@@ -1,4 +1,9 @@
 def initialise() -> None:
+	"""
+
+	Returns:
+		object: None
+	"""
 	print("Welcome to Asparagusz: an Enterprise Resource Planning Software!")
 	return None
 

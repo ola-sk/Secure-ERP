@@ -13,7 +13,7 @@ def read_table_from_file(file_path: str, separator: str = ';') -> list or None:
 		with open(file_path, "r") as file:
 			lines = file.readlines()
 			for line in lines:
-				rows_and_columns.append(line.replace("\n", "").split(separator))
+				rows_and_columns.append(line.strip().split(separator))
 			return rows_and_columns
 	except IOError:
 		return None
