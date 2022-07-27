@@ -5,6 +5,9 @@ from view import terminal as view
 from verify_email import verify_email
 from controller import helpers
 
+# ----------------------------------------------------------------------------------------------------------------------
+# OPERATIONS
+
 
 def list_customers():
 	customer_table = crm.read_customer_data(CUSTOMER_DATAFILE, CUSTOMER_TABLE_HEADERS)
@@ -110,6 +113,9 @@ def list_subscribed_emails() -> bool | None:
 		view.print_error_message(some_exception)
 		return is_success
 
+# ----------------------------------------------------------------------------------------------------------------------
+# CONTROL
+
 
 def run_operation(option) -> None:
 	if option == 1:
@@ -146,5 +152,6 @@ def menu() -> None:
 		try:
 			operation = view.get_input("Select an operation")
 			run_operation(int(operation))
+			helpers.get_user_acknowledgement("<< Press Enter >>")
 		except KeyError as error:
 			view.print_error_message(str(error))

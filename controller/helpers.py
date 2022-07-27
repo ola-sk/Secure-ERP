@@ -1,6 +1,14 @@
 from view import terminal as view
 
 
+def get_user_acknowledgement(label: str = ""):
+	user_input = input(label)
+	if user_input == '':
+		return
+	else:
+		get_user_acknowledgement(label)
+
+
 def validate_input(an_input: str, options: list) -> bool:
 	try:
 		if isinstance(an_input, str) and isinstance(options, list or tuple):

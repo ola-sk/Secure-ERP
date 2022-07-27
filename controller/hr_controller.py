@@ -1,3 +1,4 @@
+from controller import helpers
 from model.hr import hr
 from view import terminal as view
 
@@ -85,5 +86,6 @@ def menu():
 		try:
 			operation = view.get_input("Select an operation")
 			run_operation(int(operation))
+			helpers.get_user_acknowledgement("<< Press Enter >>")
 		except KeyError as error:
 			view.print_error_message(str(error))
