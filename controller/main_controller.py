@@ -11,8 +11,10 @@ from view.tkinter_GUI import main as view
 def run_the_app() -> Tk or None:
 	app: Tk or None = view.initialise()
 	# TODO: instead displaying `about ERP` display the log-in form upon successful log-in show main menu
-	view.display_about_enterprise_resource_planning(app)
-
+	if isinstance(app, None):
+		main_menu()
+	elif isinstance(app, Tk):
+		view.display_about_enterprise_resource_planning(app)
 	view.finalise(app)
 
 	return app
