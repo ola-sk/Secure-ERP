@@ -44,10 +44,10 @@ def convert_list_to_string(a_list: list) -> str:
 
 
 def generate_id(
-		number_of_small_letters: int = 4,
-		number_of_capital_letters: int = 2,
-		number_of_digits: int = 2,
-		number_of_special_chars: int = 2,
+		number_of_small_letters: int,
+		number_of_capital_letters: int,
+		number_of_digits: int,
+		number_of_special_chars: int,
 		allowed_special_chars=r"_+-!") -> str:
 	id_characters = []
 	id_characters.extend(random.choices(string.ascii_lowercase, k=number_of_small_letters))
@@ -67,13 +67,13 @@ def is_id_unique(the_id: str, collection: list) -> bool:
 
 def generate_unique_id(
 		collection: list,
-		number_of_small_letters=4,
-		number_of_capital_letters=2,
-		number_of_digits=2,
-		number_of_special_chars=2,
+		number_of_small_letters,
+		number_of_capital_letters,
+		number_of_digits,
+		number_of_special_chars,
 		allowed_special_chars=r"_+-!") -> str:
 	"""
-	Generate an ID that is unique in the `collection` of IDs.
+	Generate an ID that is unique in the collection of IDs.
 	Args:
 		collection (object): list - list of IDs
 		number_of_small_letters: int - number of lowercase letters that the ID should contain

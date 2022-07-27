@@ -55,6 +55,15 @@ def get_customer_ids(customer_table_headerless: list, id_column_index: int = 0) 
 		return None
 
 
+def generate_new_customer_id(customer_table_headerless: list, id_parameters: list = [4, 2, 2, 2]):
+	customer_ids_taken = get_customer_ids(customer_table_headerless)
+	if customer_ids_taken is None:
+		raise ValueError(
+			"Couldn't fetch customer ids. This step is necessary to generate a unique ID for a new customer.")
+	new_customer_id = util.generate_unique_id(customer_ids_taken, *id_parameters)
+	return new_customer_id
+
+
 def insert_customer_data(new_customer_data: list, path: str = CUSTOMER_DATAFILE, separator: str = ";") -> bool:
 	if data_manager.add_record_to_file(path, new_customer_data, separator):
 		is_success = True

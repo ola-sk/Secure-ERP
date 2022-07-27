@@ -18,11 +18,7 @@ def list_customers():
 def add_customer(yes: list, no: list) -> bool:
 	try:
 		customer_table = crm.read_customer_data(CUSTOMER_DATAFILE)
-		customer_ids_taken = crm.get_customer_ids(customer_table)
-		if customer_ids_taken is None:
-			raise ValueError(
-				"Couldn't fetch customer ids. This step is necessary to generate a unique ID for a new customer.")
-		new_customer_id = util.generate_unique_id(customer_ids_taken)
+		new_customer_id = crm.generate_new_customer_id(customer_table)
 		new_customers_data = []
 		for header in CUSTOMER_TABLE_HEADERS:
 			if header.lower() == "id" and len(new_customers_data) == 0:
