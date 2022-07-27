@@ -11,7 +11,7 @@ from view import terminal as view
 def run_the_app() -> Tk or None:
 	app: Tk or None = view.initialise()
 	# TODO: instead displaying `about ERP` display the log-in form upon successful log-in show main menu
-	if isinstance(app, None):
+	if app is None:
 		main_menu()
 	elif isinstance(app, Tk):
 		view.display_about_enterprise_resource_planning(app)
