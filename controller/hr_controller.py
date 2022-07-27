@@ -1,7 +1,7 @@
-# from turtle import update
-# from controller import helpers
-# from model.hr import hr
-# from view import terminal as view
+from turtle import update
+from controller import helpers
+from model.hr import hr
+from view import terminal as view
 
 from email import message
 
@@ -21,9 +21,7 @@ def main_hr(message):
 			return
 
 def add_employee():
-	employees_list.append(input(""))
-
-main_hr()
+	view.print_error_message("Not implemented yet.")
 
 def update_employee():
 	view.print_error_message("Not implemented yet.")
