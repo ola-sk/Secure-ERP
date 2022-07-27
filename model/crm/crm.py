@@ -72,11 +72,11 @@ def insert_customer_data(new_customer_data: list, path: str = CUSTOMER_DATAFILE,
 	return is_success
 
 
-def get_customer_emails(customer_table_headerless: list, email_column_index: int = 2) -> list or None:
+def get_client_emails(customer_table_headerless: list):
 	try:
 		if customer_table_headerless is None:
 			raise TypeError
-		customer_email_column = util.get_column_data(customer_table_headerless, email_column_index)
-		return customer_email_column
+		email_list = util.get_column_data(customer_table_headerless, CUSTOMER_TABLE_INDEXES["email"])
+		return email_list
 	except TypeError:
 		return None

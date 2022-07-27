@@ -99,7 +99,7 @@ def list_subscribed_emails() -> bool | None:
 			subscribed_customers = helpers.filter_column_condition(
 				customer_table, CUSTOMER_TABLE_INDEXES["subscribed"],
 				SUBSCRIPTION_STATUSES["subscribed"])
-			subscribed_customers_email = util.get_column_data(subscribed_customers, CUSTOMER_TABLE_INDEXES["email"])
+			subscribed_customers_email = crm.get_client_emails(subscribed_customers)
 			view.print_general_results(subscribed_customers_email, "Emails of subscribed customers")
 			is_success = True
 			return is_success
