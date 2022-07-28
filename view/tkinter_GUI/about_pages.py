@@ -29,7 +29,7 @@ def display_about_enterprise_resource_planning(app: Tk) -> None:
 		"is at the core of any company. \n"
 		"Taking an example on customer relationship management: \n"
 		"Without the clients' data, one may not be able to sell \n"
-		"your product to those, who want to buy it.\n"
+		"the products to those, who want to buy them.\n"
 		"Without a system that lets the employee access relevant data \n"
 		"about the client, the product and its warranty and the transaction, \n"
 		"it is difficult to make the process of repair efficient \n"
