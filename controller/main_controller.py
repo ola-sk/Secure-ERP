@@ -39,6 +39,14 @@ def display_menu() -> None:
 	view.print_menu("Main menu", options)
 
 
+menu_options_and_commands = {
+		"Exit program": None,
+		"Customer Relationship Management": crm_controller.menu,
+		"Sales": sales_controller.menu,
+		"Human Resources": hr_controller.menu
+}
+
+
 def handle_module_loading(option) -> None:
 	try:
 		load_module(int(option))
@@ -48,13 +56,16 @@ def handle_module_loading(option) -> None:
 		view.print_error_message("An integer was expected.")
 
 
-def main_menu() -> None:
+def main_menu(app) -> None:
 	try:
-		option = None
-		while option != '0':
-			display_menu()
-			option = view.get_input("Select module")
-			handle_module_loading(option)
-		view.print_message("Good-bye!")
+		if isinstance(app, Tk):
+			view.display_menu(app, "Main menu", menu_options_and_commands)
+		elif app is None:
+			option = None
+			while option != '0':
+				display_menu()
+				option = view.get_input("Select module")
+				handle_module_loading(option)
+			view.print_message("Good-bye!")
 	except Exception as some_exception:
 		view.print_error_message(some_exception)
