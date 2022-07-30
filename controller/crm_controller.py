@@ -85,6 +85,14 @@ def add_customer(yes: list, no: list) -> bool:
 		return is_success
 
 
+def find_customer(customer_id: str, customer_table) -> list:
+	found_customer_record = None
+	for customer_record in customer_table:
+		if customer_record[CUSTOMER_TABLE_INDEXES["id"]] == customer_id:
+			found_customer_record = customer_record
+	return found_customer_record
+
+
 def update_customer() -> bool:
 	view.print_error_message("Not implemented yet.")
 	return False
